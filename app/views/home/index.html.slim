@@ -1,4 +1,6 @@
-h3 Home
-- @users.each do |user|
-  p
-    | User: #{link_to user.name, user}
+div.container
+  h1 SSHMan
+  p Manage your SSH keys across multiple services at once!
+  h3 Login with:
+  =link_to 'Github', user_omniauth_authorize_path(:provider => :github), {:class => [:btn, "btn-inverse"]}
+  =link_to 'Bitbucket', user_omniauth_authorize_path(:provider => :bitbucket), {:class => [:btn, "btn-primary"]}

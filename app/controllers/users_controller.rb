@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if params[:id]
+      @user = User.find(params[:id]) 
+    end
+    @user ||= current_user
   end
 
   def merge_and_sync
