@@ -3,3 +3,12 @@ p
   | User: #{@user.name}
 p
   | Email: #{@user.email if @user.email}
+h4 Keys
+-@user.authorizations.each do |auth|
+  h5
+    =auth.provider
+  -auth.keys.each do |key|
+    =key.name
+    br
+    pre.pre-scrollable
+      =key.public_key

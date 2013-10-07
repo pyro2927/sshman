@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131007024145) do
+ActiveRecord::Schema.define(version: 20131007033719) do
+
+  create_table "authorizations", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "name"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"
+
+  create_table "keys", force: true do |t|
+    t.string   "key_id"
+    t.string   "public_key"
+    t.string   "url"
+    t.string   "name"
+    t.boolean  "verified"
+    t.integer  "authorization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "keys", ["authorization_id"], name: "index_keys_on_authorization_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
