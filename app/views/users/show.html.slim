@@ -1,5 +1,11 @@
 h1
   =@user.name
+h3 Link Additional Accounts
+-Devise.omniauth_configs.keys.map {|k| k.capitalize.to_s }.each do |available_provider|
+  =link_to available_provider, user_omniauth_authorize_path(:provider => available_provider.downcase), {:class => :btn}
+
+br
+br
 
 =link_to "Merge and Sync all Keys", sync_keys_path, :class => [:btn, "btn-info"], :confirm => "Are you sure? This is irreversible"
 
