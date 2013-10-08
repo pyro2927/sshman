@@ -1,11 +1,14 @@
-h3 User
+h2 User
 p
   | User: #{@user.name}
 p
   | Email: #{@user.email if @user.email}
-h4 Keys
+
+=link_to "Merge and Sync all Keys", sync_keys_path, :class => [:btn, "btn-info"], :confirm => "Are you sure? This is irreversible"
+
+h2 Keys
 -@user.authorizations.each do |auth|
-  h5
+  h3
     =auth.provider
   -auth.keys.each do |key|
     =key.name

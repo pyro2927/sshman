@@ -13,11 +13,12 @@ class UsersController < ApplicationController
   end
 
   def merge_and_sync
-    @user = User.find(params[:id])
-    keys = []
-    @user.authorizations.each do |auth|
-      keys = keys | auth.keys
+    if params[:id]
+      @user = User.find(params[:id]) 
     end
+    @user ||= current_user
+    @user.merge_and_sync
+    redirect_to @user
   end
 
 end

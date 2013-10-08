@@ -59,6 +59,7 @@ private
       auth = user.authorizations.build(:provider => provider)
       user.authorizations << auth
     end
+    auth.type = provider + "Authorization"
     auth.update_attributes auth_attr
 
     user
