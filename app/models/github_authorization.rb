@@ -17,4 +17,10 @@ class GithubAuthorization < Authorization
     create_local_key_from_hash new_key unless new_key.nil?
   end
 
+  def delete_key(key)
+    github = Github.new oauth_token: token
+    github.users.keys.delete key.key_id
+    key.destroy
+  end
+
 end

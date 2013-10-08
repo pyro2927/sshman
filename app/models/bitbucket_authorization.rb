@@ -17,4 +17,10 @@ class BitbucketAuthorization < Authorization
     create_local_key_from_hash new_key unless new_key.nil?
   end
 
+  def delete_key(key)
+    bitbucket = BitBucket.new oauth_token: token, oauth_secret: secret, client_id: ENV['BITBUCKET_KEY'], client_secret: ENV['BITBUCKET_SECRET']
+    bitbucket.users.account.delete_key name, key.key_id
+    key.destroy
+  end
+
 end
