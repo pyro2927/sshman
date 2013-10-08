@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     end
     @user ||= current_user
     @user.merge_and_sync
+    flash[:success] = "All keys synced!"
     redirect_to @user
   end
 
